@@ -7,7 +7,7 @@ const Countries = async () => {
   const data = (await responce.json()) as Country[];
   return (
     <>
-      <ul className="grid grid-cols-4 gap-5">
+      <ul className="grid grid-cols-4 gap-8">
         {data.map((country) => (
           <li className="mb-4" key={country.alpha2Code}>
             <CountryCard country={country} />

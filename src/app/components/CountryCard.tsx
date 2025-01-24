@@ -7,13 +7,25 @@ type CardProps = {
 
 const CountryCard = ({ country }: CardProps) => {
   return (
-    <article className="text-black bg-white">
-      <img className="h-24 w-max" src={country.flags.svg} alt={country.name} />
-      <div className="px-2 pb-2 pt-0">
-        <h3>{country.name}</h3>
-        <p>Popultation: {country.population}</p>
-        <p>Region: {country.region}</p>
-        <p>Capital: {country.capital}</p>
+    <article className="overflow-hidden rounded-md bg-white text-sm shadow-lg">
+      <img
+        className="h-28 w-full object-cover object-center"
+        src={country.flags.svg}
+        alt={country.name}
+      />
+      <div className="p-2">
+        <h3>
+          <b>Country:</b> {country.name}
+        </h3>
+        <p>
+          <b>Popultation:</b> {country.population}
+        </p>
+        <p>
+          <b>Region:</b> {country.region}
+        </p>
+        <p>
+          <b>Capital:</b> {country.capital}
+        </p>
       </div>
     </article>
   );
