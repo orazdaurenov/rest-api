@@ -2,7 +2,7 @@ import React from "react";
 import CountryCard from "./CountryCard";
 import { Country } from "../Types";
 
-const Countries = async () => {
+const Countries = async ({}) => {
   const responce = await fetch("https://www.apicountries.com/countries");
   const data = (await responce.json()) as Country[];
   return (

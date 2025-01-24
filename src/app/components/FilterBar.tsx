@@ -1,23 +1,31 @@
+"use client";
 import React from "react";
+import { Country } from "../Types";
 
-const FilterBar = () => {
+type FilterProps = {
+  country?: Country[];
+};
+
+const FilterBar = ({ country = [] }: FilterProps) => {
+  const regions = country.map((region) => region.region);
+  console.log("regions:", regions);
   return (
     <div className="my-5 flex justify-between px-0">
       <input
-        className="rounded-sm border border-gray-400 p-2 text-gray-500"
+        className="rounded-md border border-gray-200 p-2 text-gray-500"
         type="text"
         value=""
         placeholder="Search for a country..."
       />
       <select
-        className="rounded-sm border border-gray-400 p-2 text-gray-500"
+        className="rounded-md border border-gray-200 p-2 text-gray-500"
         name=""
         id=""
       >
         <option value="">Filter by region</option>
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
+        {regions.map((region) => (
+          <option value={region}>{region}</option>
+        ))}
       </select>
     </div>
   );
