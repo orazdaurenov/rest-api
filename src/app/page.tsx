@@ -1,11 +1,13 @@
-import Countries from "./components/Countries";
-import FilterBar from "./components/FilterBar";
+import RestCountries from "./components/RestCountries";
+import { Country } from "./Types";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const responce = await fetch("https://www.apicountries.com/countries");
+  const data = (await responce.json()) as Country[];
+
   return (
     <div>
-      <FilterBar />
-      <Countries />
+      <RestCountries newData={data} />
     </div>
   );
 }

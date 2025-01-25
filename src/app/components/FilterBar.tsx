@@ -8,6 +8,7 @@ type FilterProps = {
 
 const FilterBar = ({ country = [] }: FilterProps) => {
   const regions = country.map((region) => region.region);
+
   console.log("regions:", regions);
   return (
     <div className="my-5 flex justify-between px-0">
