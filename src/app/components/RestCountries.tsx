@@ -10,7 +10,7 @@ export type Props = {
 const RestCountries = ({ newData }: Props) => {
   return (
     <>
-      <FilterBar />
+      <FilterBar countries={newData} />
       <Countries countries={newData} />
     </>
   );

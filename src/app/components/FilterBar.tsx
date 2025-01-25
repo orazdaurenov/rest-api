@@ -3,13 +3,14 @@ import React from "react";
 import { Country } from "../Types";
 
 type FilterProps = {
-  country?: Country[];
+  countries: Country[];
 };
 
-const FilterBar = ({ country = [] }: FilterProps) => {
-  const regions = country.map((region) => region.region);
+const FilterBar = ({ countries }: FilterProps) => {
+  const allRegions = countries.map((c) => c.region);
+  const IndRegions = new Set(allRegions);
+  const SelectedRegions = Array.from(IndRegions);
 
-  console.log("regions:", regions);
   return (
     <div className="my-5 flex justify-between px-0">
       <input
@@ -24,7 +25,7 @@ const FilterBar = ({ country = [] }: FilterProps) => {
         id=""
       >
         <option value="">Filter by region</option>
-        {regions.map((region) => (
+        {SelectedRegions.map((region) => (
           <option value={region}>{region}</option>
         ))}
       </select>
