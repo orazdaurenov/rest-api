@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Country } from "../Types";
 
 type FilterProps = {
@@ -8,6 +8,7 @@ type FilterProps = {
 };
 
 const FilterBar = ({ countries, setCountries }: FilterProps) => {
+  const [definedRegion, setDefinedRegion] = useState(false);
   const allRegions = countries.map((c) => c.region);
   const IndRegions = new Set(allRegions);
   const SelectedRegions = Array.from(IndRegions);
@@ -24,15 +25,18 @@ const FilterBar = ({ countries, setCountries }: FilterProps) => {
         className="rounded-md border border-gray-200 p-2 text-gray-500"
         name=""
         id=""
-        value=""
         onChange={(e) => {
           const region = e.target.value;
+          if (region === "reset") {
+            setCountries(countries);
+            return;
+          }
           const filteredRegions = countries.filter(
             (country) => country.region === region,
           );
           setCountries(filteredRegions);
-          if (IndRegions.has(region)) {
-          }
+          setDefinedRegion(true);
+
           // if (region === "Europe") {
           //   const europeanNations = countries.filter(
           //     (country) => country.region === "Europe",
@@ -46,7 +50,9 @@ const FilterBar = ({ countries, setCountries }: FilterProps) => {
           // }
         }}
       >
-        <option value="">Filter by region</option>
+        <option value="reset">
+          {definedRegion ? "All" : "Filter by Region"}
+        </option>
         {SelectedRegions.map((region) => (
           <option key={region} value={region}>
             {region}
