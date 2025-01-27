@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import { Nunito } from "next/font/google";
 import { type Metadata } from "next";
 import NavBar from "./components/NavBar";
+import { ThemeProvider } from "./components/theme-provider";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -18,8 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${nunito.className}`}>
       <body className="mx-auto my-0 box-border max-w-screen-lg bg-slate-100">
-        <NavBar />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NavBar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
