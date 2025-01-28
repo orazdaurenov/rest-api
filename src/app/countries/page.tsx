@@ -1,7 +1,13 @@
-import React from "react";
+import RestCountries from "../components/RestCountries";
+import { Country } from "../Types";
 
-const page = () => {
-  return <div>Hello World</div>;
-};
+export default async function HomePage() {
+  const responce = await fetch("https://www.apicountries.com/countries");
+  const data = (await responce.json()) as Country[];
 
-export default page;
+  return (
+    <div>
+      <RestCountries newData={data} />
+    </div>
+  );
+}

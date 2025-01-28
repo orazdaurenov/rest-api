@@ -12,7 +12,9 @@ const Countries = ({ countries }: CountriesProps) => {
       <ul className="grid grid-cols-4 gap-8">
         {countries.map((country) => (
           <li className="mb-4" key={country.alpha2Code}>
-            <CountryCard country={country} />
+            <a href={`/countries/${country.alpha2Code}`}>
+              <CountryCard country={country} />
+            </a>
           </li>
         ))}
       </ul>
