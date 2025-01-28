@@ -18,30 +18,33 @@ export default async function Page({
   return (
     <>
       <BackBtn />
-      <div className="grid grid-cols-2 gap-12">
-        <div>
-          <img
-            className="max-w-md"
-            src={country.flags.svg}
-            alt={country.name}
-          />
+      <div className="grid h-2/4 grid-cols-2 gap-12" key={country.alpha2Code}>
+        <div className="content-center">
+          <img className="w-12/12" src={country.flags.svg} alt={country.name} />
         </div>
-        <div className="p-8">
+        <div className="content-center p-8" key={country.alpha2Code}>
           <h1 className="text-2xl">
             <b>{country.name}</b>
           </h1>
           <p>Native Name: {country.nativeName}</p>
-          <p>Population: {country.population}</p>
+          <p>Population: {country.population.toLocaleString()}</p>
           <p>Region: {country.region}</p>
           <p>Sub Region: {country.subregion}</p>
           <p>Capital: {country.capital}</p>
-          <p>Top Level Domain: {country.topLevelDomain}</p>
-          <div>
-            <h3>Border Countries:</h3>
-            {country.borders.map((border) => (
-              <BorderCountBtn id={border} />
-            ))}
-          </div>
+          <p>
+            Top Level Domain: <code>{country.topLevelDomain}</code>
+          </p>
+          <p>Currencies: {country.currencies[0]?.name}</p>
+          <p>
+            Languages:{" "}
+            {country.languages.map(
+              (language, index) => (index ? ", " : "") + language.name,
+            )}
+          </p>
+          <h3>Border Countries:</h3>
+          {country.borders.map((border) => (
+            <BorderCountBtn id={border} />
+          ))}
         </div>
       </div>
     </>

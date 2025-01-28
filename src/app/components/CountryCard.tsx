@@ -18,7 +18,7 @@ const CountryCard = ({ country }: CardProps) => {
           <b>Country:</b> {country.name}
         </h3>
         <p>
-          <b>Popultation:</b> {country.population}
+          <b>Popultation:</b> {country.population.toLocaleString()}
         </p>
         <p>
           <b>Region:</b> {country.region}
