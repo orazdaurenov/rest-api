@@ -18,33 +18,39 @@ export default async function Page({
   return (
     <>
       <BackBtn />
-      <div className="grid h-2/4 grid-cols-2 gap-12" key={country.alpha2Code}>
+      <div className="grid h-2/4 grid-cols-2 gap-12">
         <div className="content-center">
           <img className="w-12/12" src={country.flags.svg} alt={country.name} />
         </div>
-        <div className="content-center p-8" key={country.alpha2Code}>
-          <h1 className="text-2xl">
+        <div className="content-center p-8">
+          <h1 className="mb-5 text-2xl">
             <b>{country.name}</b>
           </h1>
-          <p>Native Name: {country.nativeName}</p>
-          <p>Population: {country.population.toLocaleString()}</p>
-          <p>Region: {country.region}</p>
-          <p>Sub Region: {country.subregion}</p>
-          <p>Capital: {country.capital}</p>
-          <p>
-            Top Level Domain: <code>{country.topLevelDomain}</code>
-          </p>
-          <p>Currencies: {country.currencies[0]?.name}</p>
-          <p>
-            Languages:{" "}
-            {country.languages.map(
-              (language, index) => (index ? ", " : "") + language.name,
-            )}
-          </p>
-          <h3>Border Countries:</h3>
-          {country.borders.map((border) => (
-            <BorderCountBtn id={border} />
-          ))}
+          <div className="grid grid-cols-2 gap-2 text-sm">
+            <p>Native Name: {country.nativeName}</p>
+            <p>Population: {country.population.toLocaleString()}</p>
+            <p>Region: {country.region}</p>
+            <p>Sub Region: {country.subregion}</p>
+            <p>Capital: {country.capital}</p>
+            <p>
+              Top Level Domain: <code>{country.topLevelDomain}</code>
+            </p>
+            <p>Currencies: {country.currencies[0]?.name}</p>
+            <p>
+              Languages:{" "}
+              {country.languages.map(
+                (language, index) => (index ? ", " : "") + language.name,
+              )}
+            </p>
+          </div>
+          <div key={country.alpha2Code} className="flex items-center gap-3">
+            <h3 className="mt-4">
+              <b>Border Countries:</b>
+            </h3>
+            {country.borders.map((border) => (
+              <BorderCountBtn id={border} />
+            ))}
+          </div>
         </div>
       </div>
     </>

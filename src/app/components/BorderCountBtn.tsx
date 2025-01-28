@@ -11,7 +11,7 @@ const BorderCountBtn = async ({ id }: BorderCountBtnProps) => {
   return (
     <>
       <a href={`/countries/${country.alpha2Code}`}>
-        <button className="m-1 flex-row rounded-md border border-gray-300 px-3 py-1 text-sm">
+        <button className="rounded-md border border-gray-300 px-3 text-sm">
           {country.name}
         </button>
       </a>
