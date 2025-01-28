@@ -1,4 +1,5 @@
 import BackBtn from "~/app/components/BackBtn";
+import BorderCountBtn from "~/app/components/BorderCountBtn";
 import { Country } from "~/app/Types";
 
 type SingleCountryProps = {
@@ -13,6 +14,7 @@ export default async function Page({
   const id = (await params).id;
   const response = await fetch(`https://www.apicountries.com/alpha/${id}`);
   const country = (await response.json()) as Country;
+  console.log(country.borders);
   return (
     <>
       <BackBtn />
@@ -34,6 +36,12 @@ export default async function Page({
           <p>Sub Region: {country.subregion}</p>
           <p>Capital: {country.capital}</p>
           <p>Top Level Domain: {country.topLevelDomain}</p>
+          <div>
+            <h3>Border Countries:</h3>
+            {country.borders.map((border) => (
+              <BorderCountBtn id={border} />
+            ))}
+          </div>
         </div>
       </div>
     </>
