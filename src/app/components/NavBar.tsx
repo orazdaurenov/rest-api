@@ -1,4 +1,5 @@
 import React from "react";
+import Toggle from "./Toggle";
 
 const NavBar = () => {
   return (
@@ -6,7 +7,7 @@ const NavBar = () => {
       <h1 className="text-lg font-bold">
         <a href="/countries/">Where in the world ?</a>
       </h1>
-      <p>Dark Mode</p>
+      <Toggle />
     </div>
   );
 };
