@@ -43,8 +43,9 @@ const InputFilter = ({ countries, setCountries }: FilterProps) => {
         value={curCountries}
         placeholder="Search for a country..."
         onChange={(e) => {
+          const string = e.target.value;
           const FirstCapitalized =
-            e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
+            string.charAt(0).toUpperCase() + string.slice(1);
           setFilteredCountries(FirstCapitalized);
           onSearch();
         }}

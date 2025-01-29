@@ -14,7 +14,8 @@ export default async function Page({
   const id = (await params).id;
   const response = await fetch(`https://www.apicountries.com/alpha/${id}`);
   const country = (await response.json()) as Country;
-  console.log(country.borders);
+  console.log("currencies:", country.currencies);
+  console.log("languages:", country.languages);
   return (
     <>
       <BackBtn />
@@ -43,14 +44,7 @@ export default async function Page({
               )}
             </p>
           </div>
-          <div key={country.alpha2Code} className="flex items-center gap-3">
-            <h3 className="mt-4">
-              <b>Border Countries:</b>
-            </h3>
-            {country.borders.map((border) => (
-              <BorderCountBtn id={border} />
-            ))}
-          </div>
+          <BorderCountries country={country} />
         </div>
       </div>
     </>
@@ -59,3 +53,19 @@ export default async function Page({
 // const SingleCountry = ({ country }: SingleCountryProps) => {
 //   return <h1>Country {country.name}</h1>;
 // };
+
+const BorderCountries = ({ country }: SingleCountryProps) => {
+  if (country.borders) {
+    return (
+      <div key={country.alpha2Code} className="flex items-center gap-3">
+        <h3 className="mt-4">
+          <b>Border Countries:</b>
+        </h3>
+        {country.borders.map((border) => (
+          <BorderCountBtn key={border} id={border} />
+        ))}
+      </div>
+    );
+  }
+  return null;
+};
