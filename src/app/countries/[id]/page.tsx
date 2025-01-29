@@ -36,7 +36,12 @@ export default async function Page({
             <p>
               Top Level Domain: <code>{country.topLevelDomain}</code>
             </p>
-            <p>Currencies: {country.currencies[0]?.name}</p>
+            <p>
+              Currencies:{" "}
+              {country.currencies.map(
+                (currency, index) => (index ? ", " : "") + currency.name,
+              )}
+            </p>
             <p>
               Languages:{" "}
               {country.languages.map(
