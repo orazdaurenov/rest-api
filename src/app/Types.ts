@@ -118,9 +118,9 @@ export interface Country {
   /**
    * Translations of the country name.
    */
-  translations: {
-    [key: string]: string;
-  };
+  // translations: {
+  //   [key: string]: string;
+  // };
   /**
    * URL of the country's flag.
    */

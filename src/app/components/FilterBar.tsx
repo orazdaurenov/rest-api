@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Country } from "../Types";
+import { type Country } from "../Types";
 
 type FilterProps = {
   countries: Country[];
@@ -19,17 +19,15 @@ const FilterBar = ({ countries, setCountries }: FilterProps) => {
 const InputFilter = ({ countries, setCountries }: FilterProps) => {
   const [curCountries, setFilteredCountries] = useState("");
   const onSearch = () => {
-    const allCountries = countries;
     const countryArr = [];
     //countryarr
     //INSIDE LOOP
     // if(has string) => push into country arr
     //END LOOP
     // setState(countryArr)
-    for (let index = 0; index < allCountries.length; index++) {
-      const currentItem = allCountries[index];
-      if (currentItem?.name.includes(curCountries)) {
-        countryArr.push(currentItem);
+    for (const country of countries) {
+      if (country.name?.includes(curCountries)) {
+        countryArr.push(country);
       }
     }
     setCountries(countryArr);

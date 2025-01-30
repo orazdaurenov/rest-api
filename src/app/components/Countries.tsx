@@ -1,6 +1,6 @@
 import React from "react";
 import CountryCard from "./CountryCard";
-import { Country } from "../Types";
+import { type Country } from "../Types";
 
 type CountriesProps = {
   countries: Country[];

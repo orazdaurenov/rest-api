@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import FilterBar from "./FilterBar";
 import Countries from "./Countries";
-import { Country } from "../Types";
+import { type Country } from "../Types";
 
 export type Props = {
   newData: Country[];

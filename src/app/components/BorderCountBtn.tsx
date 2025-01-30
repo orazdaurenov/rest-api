@@ -1,5 +1,5 @@
 import React from "react";
-import { Country } from "../Types";
+import { type Country } from "../Types";
 
 type BorderCountBtnProps = {
   id: string;

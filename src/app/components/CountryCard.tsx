@@ -1,5 +1,6 @@
 import React from "react";
-import { Country } from "../Types";
+import { type Country } from "../Types";
+import Image from "next/image";
 
 type CardProps = {
   country: Country;
@@ -8,10 +9,12 @@ type CardProps = {
 const CountryCard = ({ country }: CardProps) => {
   return (
     <article className="overflow-hidden rounded-md bg-white text-sm shadow-lg dark:bg-black">
-      <img
+      <Image
         className="h-28 w-full object-cover object-center"
         src={country.flags.svg}
         alt={country.name}
+        width={100}
+        height={50}
       />
       <div className="p-2">
         <h3>

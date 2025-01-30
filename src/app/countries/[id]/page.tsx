@@ -1,6 +1,7 @@
+import Image from "next/image";
 import BackBtn from "~/app/components/BackBtn";
 import BorderCountBtn from "~/app/components/BorderCountBtn";
-import { Country } from "~/app/Types";
+import { type Country } from "~/app/Types";
 
 type SingleCountryProps = {
   country: Country;
@@ -21,7 +22,12 @@ export default async function Page({
       <BackBtn />
       <div className="grid h-2/4 grid-cols-2 gap-12">
         <div className="content-center">
-          <img className="w-12/12" src={country.flags.svg} alt={country.name} />
+          <Image
+            src={country.flags.svg}
+            alt={country.name}
+            width={650}
+            height={500}
+          />
         </div>
         <div className="content-center p-8">
           <h1 className="mb-5 text-2xl">
