@@ -17,7 +17,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${nunito.className}`}>
-      <body className="mx-auto my-0 box-border max-w-screen-lg bg-slate-100 dark:bg-slate-950">
+      <body className="mx-auto my-0 box-border max-w-screen-lg bg-slate-100 dark:bg-slate-950 dark:text-white">
         <NavBar />
         {children}
       </body>

@@ -7,7 +7,7 @@ type CardProps = {
 
 const CountryCard = ({ country }: CardProps) => {
   return (
-    <article className="overflow-hidden rounded-md bg-white text-sm shadow-lg">
+    <article className="overflow-hidden rounded-md bg-white text-sm shadow-lg dark:bg-black">
       <img
         className="h-28 w-full object-cover object-center"
         src={country.flags.svg}
