@@ -1,13 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const Toggle = () => {
   // might not respect user choice on first load
-  const initialTheme = Array.from(document.documentElement.classList).some(
-    (e) => e === "dark",
-  );
-  const [isLightMode, setDarkMode] = useState(initialTheme);
+  const [isLightMode, setDarkMode] = useState<boolean | undefined>(undefined);
+  useEffect(() => {
+
+    const initialTheme = Array.from(document.documentElement.classList).some(
+      (e) => e === "dark",
+    );
+    setDarkMode(initialTheme)
+  }, [setDarkMode])
+
+
   return (
     <button
       onClick={() => {
@@ -19,7 +25,9 @@ const Toggle = () => {
         // Whenever the user explicitly chooses dark mode
       }}
     >
-      <ColorMode isDarkMode={isLightMode} />
+      {isLightMode !== undefined &&
+        <ColorMode isDarkMode={isLightMode} />
+      }
     </button>
   );
 };
