@@ -6,17 +6,13 @@ import { type Country } from "~/app/Types";
 type SingleCountryProps = {
   country: Country;
 };
-
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+// /joke -> h1 funny
+type PageProps = { params: Promise<{ id: string }> };
+export default async function Page({ params }: PageProps) {
   const id = (await params).id;
   const response = await fetch(`https://www.apicountries.com/alpha/${id}`);
   const country = (await response.json()) as Country;
-  console.log("currencies:", country.currencies);
-  console.log("languages:", country.languages);
+
   return (
     <>
       <BackBtn />
